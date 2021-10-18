@@ -149,7 +149,7 @@ public class CriaConta_gerente extends javax.swing.JFrame {
              Manager gerente = new Manager(Usuario_txt.getText(), Senha_txt.getText());
              Lista_contas.lista_gerentes.add(gerente);
              
-             JOptionPane.showMessageDialog(null,"Cadastrado com sucesso!");   
+             JOptionPane.showMessageDialog(null,"Cadastrado com sucesso");   
         }
         else
         {
