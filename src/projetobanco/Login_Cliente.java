@@ -6,21 +6,18 @@
 package projetobanco;
 
 import javax.swing.JOptionPane;
+import java.io.*;
 
 /**
  *
  * @author Greg Mago
  */
-public class NewJFrame extends javax.swing.JFrame {
-    
-    public static Contas conta = new Contas();
-    public static ContaPoupança conta_poupanca = new ContaPoupança();
-    public static ContaEspecial conta_especial = new ContaEspecial();
+public class Login_Cliente extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      */
-    public NewJFrame() {
+    public Login_Cliente() {
         initComponents();
     }
 
@@ -38,6 +35,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         Usuario_txt = new javax.swing.JTextField();
         Senha_txt = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,70 +50,71 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(102, 102, 255));
+        jLabel1.setText("Login Cliente");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Usuario)
-                            .addComponent(Senha))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Senha_txt, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
-                            .addComponent(Usuario_txt))))
-                .addContainerGap(31, Short.MAX_VALUE))
+                            .addComponent(jButton1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(Usuario)
+                                    .addComponent(Senha))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(Senha_txt, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                                    .addComponent(Usuario_txt)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(jLabel1)))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Usuario)
                     .addComponent(Usuario_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Senha)
                     .addComponent(Senha_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        if (Senha_txt.getText().equals(conta.senha))
-        {         
-            if (Usuario_txt.getText().equals("gerente"))
-            {
-                JOptionPane.showMessageDialog(null,"Bem vindo gerente"); 
-                Gerente ger = new Gerente();
-                ger.setVisible(true);
+        // TODO add your handling code here:     
+       
+        for (int i = 0; i < Lista_contas.lista_consumidores.size(); i++) {
+            Consumidor consumidores_cadastrados = Lista_contas.lista_consumidores.get(i);
+  
+            if (consumidores_cadastrados.getUsername().equals(Usuario_txt.getText()) && consumidores_cadastrados.getPassword().equals(Senha_txt.getText())) {
+                //JOptionPane.showMessageDialog(null, "Bem vindo cliente");
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Senha ou usuario incorreto!");
+                System.out.println("Usuario: " + consumidores_cadastrados.getUsername() + "Senha: " + consumidores_cadastrados.getPassword());
             }
-            else
-            {
-                JOptionPane.showMessageDialog(null,"Bem vindo cliente"); 
-                Cliente cle = new Cliente();
-                cle.setVisible(true);
-            }
-               
-             this.setVisible(false);
         }
-        else
-        {   
-            JOptionPane.showMessageDialog(null,"Senha ou usuario incorreto!");
-        
-        }   
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
- 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Senha;
@@ -123,5 +122,6 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel Usuario;
     private javax.swing.JTextField Usuario_txt;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

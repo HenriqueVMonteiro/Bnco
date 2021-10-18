@@ -9,7 +9,26 @@ package projetobanco;
  *
  * @author Greg Mago
  */
-public class Contas {
-    public String senha = "123";
- 
+public abstract class Contas {
+
+    private double saldo;
+    private int id;
+
+    public Contas(double Saldo, int Id) {
+        this.saldo = Saldo;
+        this.id = Id;
+    }
+    public abstract boolean sacar(double valor_p_sacar);
+    
+    public double getSaldo() {
+        return saldo;
+    }
+    public int getId() {
+		return id;
+    }
+    public void setSaldo(double saldo) {
+		this.saldo = saldo;
+    }
+    
+
 }

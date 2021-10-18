@@ -4,11 +4,19 @@
  * and open the template in the editor.
  */
 package projetobanco;
-
+import java.util.ArrayList;
 /**
  *
  * @author Greg Mago
  */
-public class Manager {
-    
+public class Manager extends Usuario {
+    private ArrayList<Consumidor> ListConsumidores = new ArrayList<Consumidor>();
+
+    public ArrayList<Consumidor> getListaConsumidores() {
+		return ListConsumidores;
+    }
+
+    public Manager(String usuario, String senha) {
+	super(usuario, senha,"gerente");	
+    }
 }

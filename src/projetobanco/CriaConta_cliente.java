@@ -5,17 +5,23 @@
  */
 package projetobanco;
 
+import java.security.Key;
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import java.awt.Cursor;
+import java.io.UnsupportedEncodingException;
+import java.security.GeneralSecurityException;
+
 /**
  *
  * @author Greg Mago
  */
 public class CriaConta_cliente extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form CriaConta_gerente
      */
@@ -100,7 +106,7 @@ public class CriaConta_cliente extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Ja possui uma conta ?");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 51, 255));
@@ -116,7 +122,7 @@ public class CriaConta_cliente extends javax.swing.JFrame {
                 jLabel7MouseExited(evt);
             }
         });
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 100, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 100, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,43 +148,57 @@ public class CriaConta_cliente extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    try
-    {
-        if (Usuario_txt.getText().isEmpty() || Password_txt.getText().isEmpty())
-        {
-             JOptionPane.showMessageDialog(null,"Preencha todos os campos!");
+        String senha = Password_txt.getText();
+
+         try {
+            senha = Encrypt.encrypt(senha);
+        } catch (Exception a) {
+            a.printStackTrace();
         }
-        else
-        {
-        BufferedWriter bw = new BufferedWriter(new FileWriter("login.txt",true));
-        bw.append(Usuario_txt.getText());
-        bw.newLine();
-        bw.append(Password_txt.getText());
-        bw.close();    
-        JOptionPane.showMessageDialog(null,"Cadastrado com sucesso!"); 
-        }
-      
-    }
-    catch (IOException ex)  
-    {
-       ex.printStackTrace();
-    }
         
+        try {
+            boolean existe = !(Usuario_txt.getText().isEmpty() || Password_txt.getText().isEmpty());
+
+            if (existe) {
+                Consumidor cons = new Consumidor(Usuario_txt.getText(), Password_txt.getText());
+                Lista_contas.lista_consumidores.add(cons);
+
+                JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
+            } else {
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            }
+
+            if (existe) {
+                BufferedWriter bw = new BufferedWriter(new FileWriter("login_cliente.txt", true));
+                bw.append("--------");
+                bw.newLine();
+                bw.append(Usuario_txt.getText());
+                bw.newLine();
+                bw.append(senha);
+                bw.newLine();
+                bw.close();
+            } else {
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
         // TODO add your handling code here:
         Inicio ini = new Inicio();
         ini.setVisible(true);
-        
+
         this.setVisible(false);
     }//GEN-LAST:event_VoltarActionPerformed
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         // TODO add your handling code here:
-        NewJFrame frame = new NewJFrame();
+        Login_Cliente frame = new Login_Cliente();
         frame.setVisible(true);
-        
+
         this.setVisible(false);
     }//GEN-LAST:event_jLabel7MouseClicked
 

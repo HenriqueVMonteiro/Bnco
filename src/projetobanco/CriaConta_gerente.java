@@ -4,9 +4,12 @@
  * and open the template in the editor.
  */
 package projetobanco;
+
 import java.io.*;
 import javax.swing.JOptionPane;
 import java.awt.Cursor;
+import java.security.GeneralSecurityException;
+
 /**
  *
  * @author Greg Mago
@@ -139,55 +142,56 @@ public class CriaConta_gerente extends javax.swing.JFrame {
 
     private void EnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnviarActionPerformed
         // TODO add your handling code here:
-    try
-    {
-        
-        boolean existe = !(Usuario_txt.getText().isEmpty() || Senha_txt.getText().isEmpty());
+        String senha = Senha_txt.getText();
+
+        try {
+            senha = Encrypt.encrypt(senha);
+        } catch (Exception a) {
+            a.printStackTrace();
+        }
        
-        if (existe)
-        {
-             Manager gerente = new Manager(Usuario_txt.getText(), Senha_txt.getText());
-             Lista_contas.lista_gerentes.add(gerente);
-             
-             JOptionPane.showMessageDialog(null,"Cadastrado com sucesso");   
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null,"Preencha todos os campos!");
-        }
-        
-        if (!existe)
-        {
-             JOptionPane.showMessageDialog(null,"Preencha todos os campos!");
-        }
-        else
-        {          
-                BufferedWriter bw = new BufferedWriter(new FileWriter("login_gerente.txt",true));
+        try {
+            boolean existe = !(Usuario_txt.getText().isEmpty() || Senha_txt.getText().isEmpty());
+
+            if (existe) {
+                Manager gerente = new Manager(Usuario_txt.getText(), Senha_txt.getText());
+                Lista_contas.lista_gerentes.add(gerente);
+
+                JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
+            } else {
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            }
+
+            if (existe) {
+
+                BufferedWriter bw = new BufferedWriter(new FileWriter("login_gerente.txt", true));
+                bw.append("--------");
                 bw.newLine();
                 bw.append(Usuario_txt.getText());
                 bw.newLine();
-                bw.append(Senha_txt.getText());
+                bw.append(senha);
+                bw.newLine();
                 bw.close();
+            } else {
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
-    }
-    catch (IOException ex)  
-    {
-       ex.printStackTrace();
-    }
-    
+
     }//GEN-LAST:event_EnviarActionPerformed
 
     private void VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
         // TODO add your handling code here:
         Inicio ini = new Inicio();
         ini.setVisible(true);
-        
+
         this.setVisible(false);
     }//GEN-LAST:event_VoltarActionPerformed
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         // TODO add your handling code here:
-        NewJFrame frame = new NewJFrame();
+        Login_Gerente frame = new Login_Gerente();
         frame.setVisible(true);
 
         this.setVisible(false);
