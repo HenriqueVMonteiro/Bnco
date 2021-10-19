@@ -130,7 +130,7 @@ public class Cliente extends javax.swing.JFrame {
                System.out.println("Verificar extrato de uma conta específica");
                break;
            case 5:
-               System.out.println("Alterar sua senha");
+               System.out.println("Alterar sua senha.");
                break;
        }
     }//GEN-LAST:event_jButton1ActionPerformed
