@@ -13,7 +13,8 @@ import java.io.*;
  * @author Greg Mago
  */
 public class Login_Cliente extends javax.swing.JFrame {
-
+    
+    public static Usuario Usuario_Logado;
     /**
      * Creates new form NewJFrame
      */
@@ -103,12 +104,17 @@ public class Login_Cliente extends javax.swing.JFrame {
        
         for (int i = 0; i < Lista_contas.lista_consumidores.size(); i++) {
             Consumidor consumidores_cadastrados = Lista_contas.lista_consumidores.get(i);
-  
+            
             if (consumidores_cadastrados.getUsername().equals(Usuario_txt.getText()) && consumidores_cadastrados.getPassword().equals(Senha_txt.getText())) {
                 //JOptionPane.showMessageDialog(null, "Bem vindo cliente");
-
+                Usuario_Logado = consumidores_cadastrados;
+            
+                Cliente cl = new Cliente();
+                cl.setVisible(true);
+                this.setVisible(false);
+                
             } else {
-                JOptionPane.showMessageDialog(null, "Senha ou usuario incorreto!");
+                //JOptionPane.showMessageDialog(null, "Senha ou usuario incorreto!");
                 System.out.println("Usuario: " + consumidores_cadastrados.getUsername() + "Senha: " + consumidores_cadastrados.getPassword());
             }
         }

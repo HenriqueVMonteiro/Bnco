@@ -104,13 +104,15 @@ public class Login_Gerente extends javax.swing.JFrame {
             Manager gerentes_cadastrados = Lista_contas.lista_gerentes.get(i);
             
             if (gerentes_cadastrados.getUsername().equals(Usuario_txt.getText()) && gerentes_cadastrados.getPassword().equals(Senha_txt.getText())) {
-                //JOptionPane.showMessageDialog(null, "Bem vindo gerente");
-
+                
+                Login_Cliente.Usuario_Logado = gerentes_cadastrados;
+                
                 Gerente ger = new Gerente();
                 ger.setVisible(true);
                 this.setVisible(false);
+                
             } else {
-                JOptionPane.showMessageDialog(null, "Senha ou usuario incorreto!");
+                //JOptionPane.showMessageDialog(null, "Senha ou usuario incorreto!");
 
                 System.out.println("Usuario: " + gerentes_cadastrados.getUsername() + "Senha: " + gerentes_cadastrados.getPassword());
             }
