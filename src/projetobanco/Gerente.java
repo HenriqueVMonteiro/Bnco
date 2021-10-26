@@ -120,32 +120,35 @@ public class Gerente extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       switch (jComboBox1.getSelectedIndex()){
-           case 0:
+        switch (jComboBox1.getSelectedIndex()) {
+            case 0:
+                Verifica_Usuario vu = new Verifica_Usuario();
+                vu.setVisible(true);
+                this.setVisible(false);
                 System.out.println("Verificar o nome de seus clientes e quais são suas respectivas contas");
                 break;
-           case 1:
-               System.out.println("Verificar as informações de cada uma das contas");
-               break;
-           case 2:
-               System.out.println("Faz uma aplicação de dinheiro para um cliente específico");
-               break;
-           case 3:
-               System.out.println("Faz transferência de dinheiro entre contas específicas de clientes diferentes");
-               break;
-           case 4:
-               System.out.println("Faz retiradas maiores de R$ 110.000,00 de contas de seus cliente");
-               break;
-           case 5:
-               System.out.println("Cadastra/Edita os limites de retiradas negativas e também da taxa de juros da poupança.");
-               break;
-           case 6:
-               System.out.println("Cadastrar outros usuários (gerentes e clientes)");
-               break;
+            case 1:
+                System.out.println("Verificar as informações de cada uma das contas");
+                break;
+            case 2:
+                System.out.println("Faz uma aplicação de dinheiro para um cliente específico");
+                break;
+            case 3:
+                System.out.println("Faz transferência de dinheiro entre contas específicas de clientes diferentes");
+                break;
+            case 4:
+                System.out.println("Faz retiradas maiores de R$ 110.000,00 de contas de seus cliente");
+                break;
+            case 5:
+                System.out.println("Cadastra/Edita os limites de retiradas negativas e também da taxa de juros da poupança.");
+                break;
+            case 6:
+                System.out.println("Cadastrar outros usuários (gerentes e clientes)");
+                break;
             case 7:
-               System.out.println("Alterar sua senha");
-               break;
-       }
+                System.out.println("Alterar sua senha");
+                break;
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

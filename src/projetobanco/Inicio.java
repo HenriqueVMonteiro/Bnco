@@ -119,7 +119,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void GerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GerenteActionPerformed
         // TODO add your handling code here:
-                CriaConta_gerente ger = new CriaConta_gerente();
+                CriaConta_gerente_inicio ger = new CriaConta_gerente_inicio();
                 ger.setVisible(true);
                 
                 this.setVisible(false);
@@ -127,7 +127,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteActionPerformed
         // TODO add your handling code here:
-                CriaConta_cliente cl = new CriaConta_cliente();
+                CriaConta_cliente_inicio cl = new CriaConta_cliente_inicio();
                 cl.setVisible(true);
                 
                 this.setVisible(false);

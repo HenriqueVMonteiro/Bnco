@@ -4,13 +4,15 @@
  * and open the template in the editor.
  */
 package projetobanco;
-
+import java.util.ArrayList;
 /**
  *
  * @author Greg Mago
  */
 public abstract class Contas {
-
+    
+    public ArrayList<String> Extratos = new ArrayList<>();
+    
     private double saldo;
     private int id;
 

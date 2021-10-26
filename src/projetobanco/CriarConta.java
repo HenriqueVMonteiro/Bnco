@@ -155,21 +155,21 @@ public class CriarConta extends javax.swing.JFrame {
 
         switch (Conta.getSelectedIndex()) {
             case 0:
-                ContaSimples simples = new ContaSimples(getRandomNumberInRange(1, 999), 0);
+                ContaSimples simples = new ContaSimples(0, getRandomNumberInRange(1, 999));
                 ((Consumidor) Login_Cliente.Usuario_Logado).getContas().add(simples);
                 ((Consumidor) Login_Cliente.Usuario_Logado).setContaSimplesCount(1);
                 System.out.println(((Consumidor) Login_Cliente.Usuario_Logado).getContaSimplesCount());
                 JOptionPane.showMessageDialog(null, "Conta criada com sucesso!");
                 break;
             case 1:
-                ContaPoupança poupança = new ContaPoupança(getRandomNumberInRange(1, 999), 0);
+                ContaPoupança poupança = new ContaPoupança(0, getRandomNumberInRange(1, 999));
                 ((Consumidor) Login_Cliente.Usuario_Logado).getContas().add(poupança);
                 ((Consumidor) Login_Cliente.Usuario_Logado).setContaPoupançaCount(1);
                 System.out.println(((Consumidor) Login_Cliente.Usuario_Logado).getContaPoupançaCount());
                 JOptionPane.showMessageDialog(null, "Conta criada com sucesso!");
                 break;
             case 2:
-                ContaEspecial especial = new ContaEspecial(getRandomNumberInRange(1, 999), 0);
+                ContaEspecial especial = new ContaEspecial(0, getRandomNumberInRange(1, 999));
                 ((Consumidor) Login_Cliente.Usuario_Logado).getContas().add(especial);
                 ((Consumidor) Login_Cliente.Usuario_Logado).setContaEspecialCount(1);
                 System.out.println(((Consumidor) Login_Cliente.Usuario_Logado).getContaEspecialCount());

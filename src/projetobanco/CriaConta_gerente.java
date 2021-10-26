@@ -191,7 +191,7 @@ public class CriaConta_gerente extends javax.swing.JFrame {
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         // TODO add your handling code here:
-        Login_Gerente frame = new Login_Gerente();
+        CriaConta_gerente_inicio frame = new CriaConta_gerente_inicio();
         frame.setVisible(true);
 
         this.setVisible(false);

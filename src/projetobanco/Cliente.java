@@ -119,26 +119,45 @@ public class Cliente extends javax.swing.JFrame {
         // TODO add your handling code here:
        switch (jComboBox1.getSelectedIndex()){
            case 0:
-                System.out.println("Criar Contas");
-                
+                System.out.println("Criar Contas");              
                 CriarConta ac = new CriarConta();
                 ac.setVisible(true);
                 
                 this.setVisible(false);
                 break;
            case 1:
-               System.out.println("Aplicar dinheiro em uma de suas contas");
+                DepositarDinheiro_cliente ad = new DepositarDinheiro_cliente();
+                ad.setVisible(true);
+                this.setVisible(false);
+                
+                System.out.println("Aplicar dinheiro em uma de suas contas");
                break;
            case 2:
+               RetirarDinheiro_cliente1 rc = new RetirarDinheiro_cliente1();
+               rc.setVisible(true);
+               this.setVisible(false);   
+               
                System.out.println("Retirar dinheiro de uma de suas contas");
                break;
            case 3:
+               VerificarSaldo_cliente vc = new VerificarSaldo_cliente();
+               vc.setVisible(true);
+               this.setVisible(false);
+               
                System.out.println("Verificar saldo de uma conta específica");
                break;
            case 4:
+               Extrato_cliente ec = new Extrato_cliente();
+               ec.setVisible(true);
+               this.setVisible(false);
+               
                System.out.println("Verificar extrato de uma conta específica");
                break;
            case 5:
+               AlterarSenha_cliente acc = new AlterarSenha_cliente();
+               acc.setVisible(true);
+               this.setVisible(false);
+               
                System.out.println("Alterar sua senha");
                break;
        }

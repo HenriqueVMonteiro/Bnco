@@ -87,13 +87,13 @@ public class CriaConta_cliente extends javax.swing.JFrame {
         jLabel5.setText("Complete o cadastro");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(89, 11, 177, 49));
 
-        jButton1.setText("Enviar");
+        jButton1.setText("Cadastro");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 187, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, -1, -1));
 
         Voltar.setText("Voltar");
         Voltar.addActionListener(new java.awt.event.ActionListener() {
@@ -150,18 +150,19 @@ public class CriaConta_cliente extends javax.swing.JFrame {
         // TODO add your handling code here:
         String senha = Password_txt.getText();
 
-         try {
+        try {
             senha = Encrypt.encrypt(senha);
         } catch (Exception a) {
             a.printStackTrace();
         }
-        
+
         try {
             boolean existe = !(Usuario_txt.getText().isEmpty() || Password_txt.getText().isEmpty());
 
             if (existe) {
                 Consumidor cons = new Consumidor(Usuario_txt.getText(), Password_txt.getText());
                 Lista_contas.lista_consumidores.add(cons);
+                
 
                 JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
             } else {
@@ -196,7 +197,7 @@ public class CriaConta_cliente extends javax.swing.JFrame {
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         // TODO add your handling code here:
-        Login_Cliente frame = new Login_Cliente();
+        CriaConta_cliente_inicio frame = new CriaConta_cliente_inicio();
         frame.setVisible(true);
 
         this.setVisible(false);
