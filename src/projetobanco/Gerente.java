@@ -128,6 +128,7 @@ public class Gerente extends javax.swing.JFrame {
                 System.out.println("Verificar o nome de seus clientes e quais são suas respectivas contas");
                 break;
             case 1:
+                
                 System.out.println("Verificar as informações de cada uma das contas");
                 break;
             case 2:
@@ -146,6 +147,9 @@ public class Gerente extends javax.swing.JFrame {
                 System.out.println("Cadastrar outros usuários (gerentes e clientes)");
                 break;
             case 7:
+                AlterarSenha_gerente asg = new AlterarSenha_gerente();
+                asg.setVisible(true);
+                this.setVisible(false);
                 System.out.println("Alterar sua senha");
                 break;
         }
